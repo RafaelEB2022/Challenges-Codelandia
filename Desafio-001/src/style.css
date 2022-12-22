@@ -1,6 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -41,6 +43,7 @@ input {
     .wrapper {
         max-width: 90em;
 
+        padding: 10em 2em;
         margin-inline: auto;
     }
 }
@@ -87,6 +90,7 @@ input {
     display: flex;
     align-items: center;
 
+    height: 4em;
     width: 100%;
 
     padding: 1.2em;
@@ -111,6 +115,20 @@ input {
     font-weight: 300;
 
     color: rgba(255, 255, 255, 0.5);
+}
+
+@media screen and (min-width: 48em) {
+    .l-header .content {
+        gap: 7.3em;
+    }
+
+    .l-header__title {
+        font-size: var(--fs-title-desktop);
+    }
+
+    .l-header__search {
+        height: 6.5em;
+    }
 }
 
 /* 
@@ -169,6 +187,21 @@ input {
 
         color: var(--gray);
     }
+
+@media screen and (min-width: 48em) {
+    .news__date {
+        font-size: 1.6rem;
+        font-weight: 500;
+    }
+
+    .news__content h3 {
+        font-size: calc(var(--fs-title-desktop) + .2rem);
+    }
+
+    .news__content p {
+        font-size: 1.8rem;
+    }
+}
 
 /* 
 * HEART ICON
