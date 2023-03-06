@@ -31,10 +31,12 @@
 
 .container {
     display: grid;
-    grid-template-rows: 41.4em 1fr 6em; 
-    
-    width: 100vw;
+    grid-template-rows: 41.4em 1fr 6em;
+
+    min-width: calc(100vw - 2rem);
     height: auto;
+
+    overflow: hidden;
 }
 
 /* CABEÇALHO */
@@ -51,11 +53,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        
+
         font-size: var(--fs-200);
         font-weight: 500;
 
-        width: 100vw;
+        width: 100%;
         margin-inline: auto;
 
         background-color: var(--black-light);
@@ -65,18 +67,24 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        
+
         font-size: var(--fs-600);
         font-weight: 600;
 
-        width: 100vw;
+        width: 100%;
 
         color: var(--black-light);
         background-color: var(--white);
     }
 
     .header__image {
-        background-image: url(./assets/wallpaper.jpeg);
+        background:
+            linear-gradient(to right,
+                rgb(0 0 0 / 0.7),
+                rgb(0 0 0 / 0)
+            ),
+            url(./assets/wallpaper.jpeg);
+
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
@@ -86,28 +94,37 @@
         justify-content: center;
         align-items: flex-start;
 
-        width: 100vw;
+        width: 100%;
 
         padding-inline-start: 2em;
         padding-inline-end: 3.7em;
         gap: 1.2em;
     }
 
-        .header__image-title {
+    @media screen and (min-width: 64em) {
+        .header__image {
+            padding-inline-start: 10rem;
+        }
+    }
+
+        .header__image--title {
             font-size: var(--fs-800);
             font-weight: 700;
         }
 
-            @media screen and (min-width: 48em) {
-                .header__image-title {
-                    font-size: var(--fs-700);
-                }
+        @media screen and (min-width: 48em) {
+            .header__image--title {
+                font-size: var(--fs-700);
             }
+        }
 
         .header__image-paragraph {
             font-size: var(--fs-200);
-            font-weight: 600;
+            font-weight: 500;
+            color: var(--white);
             line-height: 1.7;
+
+            max-width: 63.7rem;
         }
 
         @media screen and (min-width: 48em) {
@@ -118,10 +135,80 @@
 
 /* CONTEÚDO PRINCIPAL */
 .l-main {
-    display: grid;
-
-    width: 100vw;
+    padding-block: 5rem;
 }
+
+    .wrapper {
+        width: 100%;
+    }
+
+        .main__header {
+            display: grid;
+            place-content: center;
+
+            row-gap: .5rem;
+            
+            width: 100%;
+        }
+
+            .main__header--title {
+                font-size: var(--fs-800);
+                font-weight: 600;
+                color: var(--black-light);
+                text-align: center;
+            }
+
+            .main__header--content {
+                font-size: var(--fs-200);
+                font-weight: 500;
+                color: var(--gray);
+                line-height: 2.8rem;
+                text-align: center;
+            }
+
+                @media screen and (min-width: 48em) {
+                    .main__header--title {
+                        font-size: calc(var(--fs-800) + .4rem);
+                    }
+
+                    .main__header--content {
+                        font-size: calc(var(--fs-200) + .4rem);
+                    }
+                }
+
+        .c-card {
+            width: min(98% - 1rem, 144em);
+
+            margin-inline: auto;
+        }
+
+            .card__list {
+                display: grid;
+                place-content: center;
+                grid-template-columns: repeat(auto-fit, minmax(min(30rem, 100%), 1fr));
+                grid-auto-rows: auto;
+                column-gap: 2rem;
+                row-gap: 4rem;
+
+                margin-inline: auto;
+                margin-top: 6rem;
+
+                width: 100%;
+            }
+
+            .card__item {
+                display: grid;
+                place-content: center;
+
+                padding: 7.6rem 6.2rem;
+
+                background-color: var(--white-200);
+            }
+
+            .card__content img {
+                width: 100%;
+                height: auto;
+            }
 
 /* RODAPÉ */
 .l-footer {
